@@ -1,1 +1,180 @@
-<h1>This is a page</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+    display: block; /* Shown by default */
+    z-index: 1; /* Sit on top */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#grid {
+    padding: 1em;
+    border: 1px;
+    display: none;
+}
+
+#green {
+    top: 0;
+    left: 0;
+    right: 50%;
+    bottom: 50%;
+    color: green;
+}
+
+#red {
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 50%;
+    color: red;
+    }
+
+#yellow {
+    top: 50%;
+    left: 0;
+    right: 50%;
+    bottom: 0;
+    color: yellow;
+}
+
+#blue {
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    color: blue;
+}
+</style>
+</head>
+<body>
+
+<!-- The Modal -->
+<div id="consentModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <h1>Consent Form</h1>
+        <p>Thank you for your interest in completing this experiment, we want to ensure that you understand what is being recorded and how your data will be used!</p>
+        <p><b>What you will do in this study:</b> As a participant, you will be asked to complete a simple “Simon Says” puzzle. Four different colored buttons will appear on your screen, once ready they will begin faintly flashing and you will be tasked in remembering the order in which they lit up and then replicating it by clicking on each in that pattern. The sequence will start small with just a sequence of three of the buttons lighting up in a specific order, to a total of five. After you have completed that entire sequence, you will be asked two short questions in which you will select the option that best represents your thoughts. If you at all feel uncomfortable or unsure about your answer, you can take a break, skip that question, or end the survey/experiment at any time. Once those questions have been answered, you will complete four more sessions each with another sequence and more questions following. Once you complete all five sessions, there will be a short questionnaire asking some questions about the experience, as well as yourself. Again, you may refuse to answer any question by leaving it blank or ending the experiment if you do not wish to answer.</p>
+        <p><b>Time Required:</b> The study will require about 15 minutes to complete.</p>
+        <p><b>Benefits:</b> There are no direct benefits to you for participating in this research study.  The study may help us understand what feedback sounds software users respond to positively may help software developers choose their sounds without extensive focus group testing.</p>
+        <p><b>Risks:</b> There are no anticipated risks in this study.</p>
+        <p><b>Anonymity:</b> The information that you give in the study will be anonymous.  Your name will not be collected or linked to the data.</p>
+        <ul>
+            <li>The only data being collected are the following:
+                <ul>
+                    <li>Completion Time and Timestamps</li>
+                    <li>Device Played On</li>
+                    <li>Survey Answers</li>
+                </ul>
+            </li>
+            <li>The data collected will be used for educational purposes only.</li>
+            <li>No identifying information will be collected about the user.</li>
+            <li>The data will be analyzed to find any relationship between the various participant answers to find a general trend, no specific individuals data will be highlighted.</li>
+            <li>All recorded data will be safely erased seven months after the completion of the study.</li>
+        </ul>
+        <p><b>Voluntary participation:</b> Your participation in the study is completely voluntary. </p>
+        <p><b>Right to withdraw from the study:</b> You have the right to withdraw from the study at any time without penalty. Answers to the various survey questions will only be saved once you have fully completed the experiment.</p>
+        <p><b>How to withdraw from the study:</b> If you want to withdraw from the study, simply exit out of the tab containing the web application. No information about your session will be saved or sent to our databases until you fully complete the experiment. There is no penalty for withdrawing from the study. If you would like to withdraw after your materials have been submitted, please contact Trevor Amell at the email address trevor.amell@mymail.champlain.edu.</p>
+        <p><b>Payment:</b> You will receive no payment for participating in the study.</p>
+        <p><b>If you have questions about the study, contact:</b></p>
+        <p>Trevor Amell</p>
+        <p>Information Technology & Sciences</p>
+        <p>Champlain College, Burlington, VT 05491</p>
+        <p>Email: trevor.amell@mymail.champlain.edu</p>
+        <br>
+        <p>David Kopec</p>
+        <p>Information Technology & Sciences</p>
+        <p>Champlain College, Burlington, VT 05491</p>
+        <p>Telephone: (802) 651-5952</p>
+        <p>Email: dkopec@champlain.edu</p>
+        <br>
+        <p><b>If you have questions about your rights in the study, contact:</b></p>
+        <p>Chair, Institutional Review Board for Champlain College</p>
+        <p>163 South Willard Street</p>
+        <p>Champlain College, P.O. Box 670</p>
+        <p>Burlington, VT 05402</p>
+        <p>Email: irb@champlain.edu</p>
+        <p>Website: http://www.champlain.edu/academic-affairs-provost/institutional-review-board.html</p>
+        <p>If you agree to participate in the experiment, click the agree button below.</p>
+        <br>
+        <button onclick = "closeModal()" class="close">Agree and Continue</button>
+        <br>
+    </div>
+</div>
+
+<div id = "grid">
+    <div id="green">
+        <img src="colors/green.png">
+    </div>
+    <div id="red">
+        <img src="colors/red.png">
+    </div>
+    <div id="yellow">
+        <img src="colors/yellow.png">
+    </div>
+    <div id="blue">
+        <img src="colors/blue.png">
+    </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById("consentModal");
+var grid = document.getElementById("grid");
+
+function closeModal() {
+    modal.style.display = "none";
+    beginStudy();
+}
+
+function beginStudy() {
+    grid.style.display = "block";
+}
+
+</script>
+</body>
+</html>
