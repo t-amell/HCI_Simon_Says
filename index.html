@@ -51,43 +51,7 @@ body {
     cursor: pointer;
 }
 
-#grid {
-    padding: 1em;
-    border: 1px;
-    display: none;
-}
 
-#green {
-    top: 0;
-    left: 0;
-    right: 50%;
-    bottom: 50%;
-    color: green;
-}
-
-#red {
-    top: 0;
-    left: 50%;
-    right: 0;
-    bottom: 50%;
-    color: red;
-    }
-
-#yellow {
-    top: 50%;
-    left: 0;
-    right: 50%;
-    bottom: 0;
-    color: yellow;
-}
-
-#blue {
-    top: 50%;
-    left: 50%;
-    right: 0;
-    bottom: 0;
-    color: blue;
-}
 </style>
 </head>
 <body>
@@ -148,19 +112,26 @@ body {
 </div>
 
 <div id = "grid">
-    <div id="green">
-        <img src="colors/green.png">
-    </div>
-    <div id="red">
-        <img src="colors/red.png">
-    </div>
-    <div id="yellow">
-        <img src="colors/yellow.png">
-    </div>
-    <div id="blue">
-        <img src="colors/blue.png">
-    </div>
+    <table>
+        <tr>
+            <th>
+                <img src="colors/green.png" >
+            </th>
+            <th>
+                <img src="colors/red.png">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <img src="colors/yellow.png">
+            </th>
+            <th>
+                <img src="colors/blue.png">
+            </th>
+        </tr>
+    </table>  
 </div>
+
 <script>
 // Get the modal
 var modal = document.getElementById("consentModal");
