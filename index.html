@@ -6,10 +6,16 @@
 html, 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
+}
+
+img {
     width: 100%;
-    height: 100%;
+    height: auto;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* The Modal (background) */
@@ -25,11 +31,6 @@ body {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
 }
 
 /* Modal Content */
@@ -58,10 +59,7 @@ img {
 
 #grid {
     display: none;
-    height: max-content;
-    width: max-content;
-    margin: auto;
-    padding-top: 10%; 
+    margin-top: 5%;
 }
 
 #instructions {
@@ -150,7 +148,7 @@ img {
 </div>
 
 <script>
-// Get the modal
+
 var modal = document.getElementById("consentModal");
 var grid = document.getElementById("grid");
 var instructions = document.getElementById("instructions")
@@ -163,6 +161,11 @@ function closeModal() {
 function beginStudy() {
     grid.style.display = "block";
     instructions.innerHTML = "Remember this sequence!"
+    playSequence();
+}
+
+function playSequence() {
+    
 }
 
 </script>
