@@ -27,6 +27,11 @@ body {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
@@ -51,6 +56,17 @@ body {
     cursor: pointer;
 }
 
+#grid {
+    display: none;
+    height: max-content;
+    width: max-content;
+    margin: auto;
+    padding-top: 10%; 
+}
+
+#instructions {
+    text-align: center;
+}
 
 </style>
 </head>
@@ -112,6 +128,7 @@ body {
 </div>
 
 <div id = "grid">
+    <h2 id="instructions"></h2>
     <table>
         <tr>
             <th>
@@ -136,6 +153,7 @@ body {
 // Get the modal
 var modal = document.getElementById("consentModal");
 var grid = document.getElementById("grid");
+var instructions = document.getElementById("instructions")
 
 function closeModal() {
     modal.style.display = "none";
@@ -144,6 +162,7 @@ function closeModal() {
 
 function beginStudy() {
     grid.style.display = "block";
+    instructions.innerHTML = "Remember this sequence!"
 }
 
 </script>
