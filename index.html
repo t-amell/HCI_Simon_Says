@@ -176,15 +176,13 @@ function getSequence() {
     }
 }
 
-function playSequence() {
-    var sequence = arguments[0];
+function playSequence(sequence) {
     for (color = 0; color < sequence.length; color++) {
         lightColor(sequence[color]);
     }
 }
 
-function lightColor() {
-    var color = arguments[0];
+function lightColor(color) {
     console.log(color)
     document.getElementById(color).src="colors/" + color + "Up.png";
     setTimeout(function(){
