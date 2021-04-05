@@ -130,18 +130,18 @@ table {
     <table>
         <tr>
             <th>
-                <img src="colors/green.png" >
+                <img src="colors/green.png" id="green">
             </th>
             <th>
-                <img src="colors/red.png">
+                <img src="colors/red.png" id="red">
             </th>
         </tr>
         <tr>
             <th>
-                <img src="colors/yellow.png">
+                <img src="colors/yellow.png" id="yellow">
             </th>
             <th>
-                <img src="colors/blue.png">
+                <img src="colors/blue.png" id="blue">
             </th>
         </tr>
     </table>  
@@ -161,11 +161,35 @@ function closeModal() {
 function beginStudy() {
     grid.style.display = "block";
     instructions.innerHTML = "Remember this sequence!"
-    playSequence();
+    getSequence();
+}
+
+function getSequence() {
+    var colors = ["green", "red", "yellow", "blue"];
+    var sequence = [];
+    for (sequenceMax = 0; sequenceMax < 5; sequenceMax++) {
+        var slot = Math.floor(Math.random() * 4);
+        sequence.push(colors[slot]);
+    }
+    for (amount = 3; amount <= 5; amount++) {
+        playSequence(sequence.slice(0, amount));
+    }
 }
 
 function playSequence() {
-    
+    var sequence = arguments[0];
+    for (color = 0; color < sequence.length; color++) {
+        lightColor(sequence[color]);
+    }
+}
+
+function lightColor() {
+    var color = arguments[0];
+    console.log(color)
+    document.getElementById(color).src="colors/" + color + "Up.png";
+    setTimeout(function(){
+        document.getElementById(color).src="colors/" + color + ".png";
+    }, 2000)
 }
 
 </script>
