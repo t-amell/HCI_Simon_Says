@@ -177,17 +177,14 @@ function getSequence() {
 }
 
 function playSequence(sequence) {
-    for (color = 0; color < sequence.length; color++) {
-        lightColor(sequence[color]);
-    }
-}
-
-function lightColor(color) {
-    console.log(color)
-    document.getElementById(color).src="colors/" + color + "Up.png";
-    setTimeout(function(){
-        document.getElementById(color).src="colors/" + color + ".png";
-    }, 2000)
+    sequence.forEach((color, index) => {
+        setTimeout(function(){
+            document.getElementById(color).src="colors/" + color + "Up.png";
+        }, (index * 2000) + 500);
+        setTimeout(function(){
+            document.getElementById(color).src="colors/" + color + ".png";
+        }, ((index + 1) * 2000) - 500);
+    }); 
 }
 
 </script>
