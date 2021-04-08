@@ -1,10 +1,14 @@
 
 var modal = document.getElementById("consentModal");
 var grid = document.getElementById("grid");
-var instructions = document.getElementById("instructions")
+var instructions = document.getElementById("instructions");
+var agreeButton = document.getElementById("agreeButton");
+var toggleButton = document.getElementById("toggleButton");
 
 function closeModal() {
     modal.style.display = "none";
+    agreeButton.style.display = "none";
+    toggleButton.style.display = "initial";
     beginStudy();
 }
 
@@ -35,4 +39,21 @@ function playSequence(sequence) {
             document.getElementById(color).src="colors/" + color + ".png";
         }, ((index + 1) * 2000) - 500);
     }); 
+}
+
+var shown = false
+function toggleModal() {
+    if(!shown)
+    {
+        grid.style.display = "none";
+        modal.style.display = "initial";
+        shown = true;
+    }   
+    else
+    {
+        grid.style.display = "block";
+        modal.style.display = "none";
+        shown = false;
+    }
+        
 }

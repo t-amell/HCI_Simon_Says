@@ -56,7 +56,7 @@
         <p>Website: http://www.champlain.edu/academic-affairs-provost/institutional-review-board.html</p>
         <p>If you agree to participate in the experiment, click the agree button below.</p>
         <br>
-        <button onclick = "closeModal()" class="close">Agree and Continue</button>
+        <button onclick = "closeModal()" id="agreeButton" class="close">Agree and Continue</button>
         <br>
     </div>
 </div>
@@ -82,6 +82,8 @@
         </tr>
     </table>  
 </div>
+
+<button onclick = "toggleModal()" id="toggleButton"> check agreement</button>
 
 <script src="index.js"></script>
 </script>
