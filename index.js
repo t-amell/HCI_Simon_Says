@@ -25,7 +25,7 @@ function getSequence() {
         var slot = Math.floor(Math.random() * 4);
         sequence.push(colors[slot]);
     }
-    for (amount = 3; amount <= 5; amount++) {
+    for (amount = 5; amount <= 5; amount++) {
         playSequence(sequence.slice(0, amount));
     }
 }
@@ -35,7 +35,6 @@ function playerClick(color) {
     if(!allowedToPlay){
         return;
     }
-    
     switch(color){
         case "red":
             console.log("RED");
@@ -51,8 +50,7 @@ function playerClick(color) {
             break;
         default:
             break;
-    }
-
+    } 
 }
 
 function playSequence(sequence) {
@@ -64,7 +62,9 @@ function playSequence(sequence) {
             document.getElementById(color).src="colors/" + color + ".png";
         }, ((index + 1) * 2000) - 500);
     }); 
-    allowedToPlay = true;
+    setTimeout(function(){
+        allowedToPlay = true;
+    }, (sequence.length * 2000) - 500)
 }
 
 var shown = false
