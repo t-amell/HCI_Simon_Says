@@ -2,71 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-html, 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* The Modal (background) */
-.modal {
-    display: block; /* Shown by default */
-    z-index: 1; /* Sit on top */
-    padding-top: 50px;
-    padding-bottom: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: fit-content;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#grid {
-    display: none;
-    margin-top: 5%;
-}
-
-#instructions {
-    text-align: center;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 
@@ -151,46 +87,7 @@ table {
     </table>  
 </div>
 
-<script>
-
-var modal = document.getElementById("consentModal");
-var grid = document.getElementById("grid");
-var instructions = document.getElementById("instructions")
-
-function closeModal() {
-    modal.style.display = "none";
-    beginStudy();
-}
-
-function beginStudy() {
-    grid.style.display = "block";
-    instructions.innerHTML = "Remember this sequence!"
-    getSequence();
-}
-
-function getSequence() {
-    var colors = ["green", "red", "yellow", "blue"];
-    var sequence = [];
-    for (sequenceMax = 0; sequenceMax < 5; sequenceMax++) {
-        var slot = Math.floor(Math.random() * 4);
-        sequence.push(colors[slot]);
-    }
-    for (amount = 3; amount <= 5; amount++) {
-        playSequence(sequence.slice(0, amount));
-    }
-}
-
-function playSequence(sequence) {
-    sequence.forEach((color, index) => {
-        setTimeout(function(){
-            document.getElementById(color).src="colors/" + color + "Up.png";
-        }, (index * 2000) + 500);
-        setTimeout(function(){
-            document.getElementById(color).src="colors/" + color + ".png";
-        }, ((index + 1) * 2000) - 500);
-    }); 
-}
-
+<script src="index.js"></script>
 </script>
 </body>
 </html>
