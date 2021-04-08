@@ -30,6 +30,31 @@ function getSequence() {
     }
 }
 
+var allowedToPlay = false;
+function playerClick(color) {
+    if(!allowedToPlay){
+        return;
+    }
+    
+    switch(color){
+        case "red":
+            console.log("RED");
+            break;
+        case "green":
+            console.log("GREEN");
+            break;
+        case "yellow":
+            console.log("YELLOW");
+            break;
+        case "blue":
+            console.log("BLUE");
+            break;
+        default:
+            break;
+    }
+
+}
+
 function playSequence(sequence) {
     sequence.forEach((color, index) => {
         setTimeout(function(){
@@ -39,6 +64,7 @@ function playSequence(sequence) {
             document.getElementById(color).src="colors/" + color + ".png";
         }, ((index + 1) * 2000) - 500);
     }); 
+    allowedToPlay = true;
 }
 
 var shown = false
