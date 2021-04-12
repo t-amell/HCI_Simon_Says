@@ -76,6 +76,7 @@ function playSequence(sequence) {
         }, ((index + 1) * 1500) - 500);
     }); 
     setTimeout(function(){
+        instructions.innerHTML = "Repeat the sequence!"
         allowedToPlay = true;
     }, (sequence.length * 1500) - 500)
 }
