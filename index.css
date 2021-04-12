@@ -33,6 +33,10 @@ table {
     display: none;
 }
 
+#wrongAnswerModal{
+    display: none;
+}
+
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;

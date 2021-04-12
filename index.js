@@ -1,12 +1,12 @@
 
 var modal = document.getElementById("consentModal");
+var wrongModal =  document.getElementById("wrongAnswerModal");
 var grid = document.getElementById("grid");
-var wrongAnswer = document.getElementById("wrongAnswerModal");
 var instructions = document.getElementById("instructions");
 var agreeButton = document.getElementById("agreeButton");
 var toggleButton = document.getElementById("toggleButton");
-
-var wrong = false;
+var sequence = [];
+var answer = [];
 
 function closeModal() {
     modal.style.display = "none";
@@ -23,7 +23,6 @@ function beginStudy() {
 
 function getSequence() {
     var colors = ["green", "red", "yellow", "blue"];
-    var sequence = [];
     for (sequenceMax = 0; sequenceMax < 5; sequenceMax++) {
         var slot = Math.floor(Math.random() * 4);
         sequence.push(colors[slot]);
@@ -65,7 +64,8 @@ function playerClick(color) {
             break;
         default:
             break;
-    } 
+    }   
+    enterSequence(color);
 }
 
 function playSequence(sequence) {
@@ -84,26 +84,34 @@ function playSequence(sequence) {
     }, (sequence.length * 1500) - 500)
 }
 
-function enterSequence(colors) {
-	var answer = [];
+function enterSequence(color) {
 	if(!allowedToPlay){
 		return;
 	}
 	
 	answer.push(color);
+    console.log(answer)
 	
-	if(answer.length == 5){
+	if(answer.length >= sequence.length){
 		compareAnswer();
 	}
 }
 
-function compareAnswer(sequence, answer){
-	for(amount = 5; amount <= 5; amount++) {
-        if(sequence.amount =! answer.amount){
-			wrong = true;
-			return;
-		}
-	}
+function compareAnswer(){
+    var works = true;
+	sequence.forEach((color, index) => {
+        if(answer[index] != color) {
+            grid.style.display = "none";
+            wrongModal.style.display = "block";
+            works = false;
+            console.log("Incorrect")
+        }
+    })
+
+    if (works) {
+        //GOOD MODAL
+        console.log("works")
+    }
 	
 }
 
@@ -113,14 +121,12 @@ function toggleModal() {
     {
         grid.style.display = "none";
         modal.style.display = "initial";
-		wrongAnswer.style.display = "none";
         shown = true;
     }   
     else
     {
         grid.style.display = "block";
         modal.style.display = "none";
-		wrongAnswer.style.display = "none";
         shown = false;
     }
         
