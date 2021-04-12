@@ -1,9 +1,12 @@
 
 var modal = document.getElementById("consentModal");
 var grid = document.getElementById("grid");
+var wrongAnswer = document.getElementById("wrongAnswerModal");
 var instructions = document.getElementById("instructions");
 var agreeButton = document.getElementById("agreeButton");
 var toggleButton = document.getElementById("toggleButton");
+
+var wrong = false;
 
 function closeModal() {
     modal.style.display = "none";
@@ -97,6 +100,7 @@ function enterSequence(colors) {
 function compareAnswer(sequence, answer){
 	for(amount = 5; amount <= 5; amount++) {
         if(sequence.amount =! answer.amount){
+			wrong = true;
 			return;
 		}
 	}
@@ -109,12 +113,14 @@ function toggleModal() {
     {
         grid.style.display = "none";
         modal.style.display = "initial";
+		wrongAnswer.style.display = "none";
         shown = true;
     }   
     else
     {
         grid.style.display = "block";
         modal.style.display = "none";
+		wrongAnswer.style.display = "none";
         shown = false;
     }
         
