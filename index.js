@@ -81,6 +81,28 @@ function playSequence(sequence) {
     }, (sequence.length * 1500) - 500)
 }
 
+function enterSequence(colors) {
+	var answer[];
+	if(!allowedToPlay){
+		return;
+	}
+	
+	answer.push(color);
+	
+	if(answer.length == 5){
+		compareAnswer();
+	}
+}
+
+function compareAnswer(sequence, answer){
+	for(amount = 5; amount <= 5; amount++) {
+        if(sequence.amount =! answer.amount{
+			return;
+		}
+	}
+	
+}
+
 var shown = false
 function toggleModal() {
     if(!shown)
