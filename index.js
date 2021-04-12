@@ -82,7 +82,7 @@ function playSequence(sequence) {
 }
 
 function enterSequence(colors) {
-	var answer[];
+	var answer = [];
 	if(!allowedToPlay){
 		return;
 	}
@@ -96,7 +96,7 @@ function enterSequence(colors) {
 
 function compareAnswer(sequence, answer){
 	for(amount = 5; amount <= 5; amount++) {
-        if(sequence.amount =! answer.amount{
+        if(sequence.amount =! answer.amount){
 			return;
 		}
 	}
