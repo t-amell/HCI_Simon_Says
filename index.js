@@ -37,16 +37,28 @@ function playerClick(color) {
     }
     switch(color){
         case "red":
-            console.log("RED");
+            document.getElementById(color).src="colors/" + color + "Up.png";
+            setTimeout(function(){
+                document.getElementById(color).src="colors/" + color + ".png";
+            }, 150);
             break;
         case "green":
-            console.log("GREEN");
+            document.getElementById(color).src="colors/" + color + "Up.png";
+            setTimeout(function(){
+                document.getElementById(color).src="colors/" + color + ".png";
+            }, 150);
             break;
         case "yellow":
-            console.log("YELLOW");
+            document.getElementById(color).src="colors/" + color + "Up.png";
+            setTimeout(function(){
+                document.getElementById(color).src="colors/" + color + ".png";
+            }, 150);
             break;
         case "blue":
-            console.log("BLUE");
+            document.getElementById(color).src="colors/" + color + "Up.png";
+            setTimeout(function(){
+                document.getElementById(color).src="colors/" + color + ".png";
+            }, 150);
             break;
         default:
             break;
@@ -54,17 +66,18 @@ function playerClick(color) {
 }
 
 function playSequence(sequence) {
+
     sequence.forEach((color, index) => {
         setTimeout(function(){
             document.getElementById(color).src="colors/" + color + "Up.png";
-        }, (index * 2000) + 500);
+        }, (index * 1500) + 500);
         setTimeout(function(){
             document.getElementById(color).src="colors/" + color + ".png";
-        }, ((index + 1) * 2000) - 500);
+        }, ((index + 1) * 1500) - 500);
     }); 
     setTimeout(function(){
         allowedToPlay = true;
-    }, (sequence.length * 2000) - 500)
+    }, (sequence.length * 1500) - 500)
 }
 
 var shown = false
