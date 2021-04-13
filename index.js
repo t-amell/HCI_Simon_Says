@@ -9,14 +9,12 @@ var sequence = [];
 var answer = [];
 
 function closeModal() {
-    modal.style.display = "none";
-    agreeButton.style.display = "none";
-    toggleButton.style.display = "initial";
+    toggleVisual(toggleButton, modal)
     beginStudy();
 }
 
 function beginStudy() {
-    grid.style.display = "block";
+    toggleVisual(grid, agreeButton);
     instructions.innerHTML = "Remember this sequence!"
     getSequence();
 }
@@ -101,8 +99,7 @@ function compareAnswer(){
     var works = true;
 	sequence.forEach((color, index) => {
         if(answer[index] != color) {
-            grid.style.display = "none";
-            wrongModal.style.display = "block";
+            toggleVisual(wrongModal, grid)
             works = false;
             console.log("Incorrect")
         }
@@ -115,19 +112,15 @@ function compareAnswer(){
 	
 }
 
-var shown = false
-function toggleModal() {
-    if(!shown)
-    {
-        grid.style.display = "none";
-        modal.style.display = "initial";
-        shown = true;
-    }   
-    else
-    {
-        grid.style.display = "block";
-        modal.style.display = "none";
-        shown = false;
-    }
-        
+function toggleVisual(toShow, toDisappear) {
+    toShow.style.display = "block";
+    toDisappear.style.display = "none";
+}
+
+function restartGrid(){
+    answer = [];
+    sequence = [];
+    toggleVisual(grid, wrongModal);
+    instructions.innerHTML = "Remember this sequence!"
+    getSequence();
 }
