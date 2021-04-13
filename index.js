@@ -5,6 +5,7 @@ let grid = document.getElementById("grid");
 let instructions = document.getElementById("instructions");
 let agreeButton = document.getElementById("agreeButton");
 let toggleButton = document.getElementById("toggleButton");
+let midSurvey = document.getElementById("midSurvey");
 
 var playThrough = 0;
 var timeoutIds = [];
@@ -13,6 +14,8 @@ var answer = [];
 var colors = ["green", "red", "yellow", "blue"];
 var allowedToPlay = false;
 var correct = true;
+
+var userMidSurvey = "";
 
 function closeModal() {
     toggleVisual([toggleButton], [modal])
@@ -100,11 +103,7 @@ function compareAnswer(){
             console.log("Incorrect")
         }
     });
-
     if (correct) {
-        if (answer.length >= 5) {
-            playThrough++;
-        }
         console.log("Correct");
         setTimeout(function(){
             restartGrid();
@@ -138,13 +137,16 @@ function restartGrid(){
     if (playThrough > 4) {
         beginEndingSurvey();
     } else {
-        if(answer.length >= 5 || !correct){
+        if (answer.length >= 5) {
+            answer = [];
             sequence = [];
+            toggleVisual([midSurvey], [grid, toggleButton]);
+        } else {
+            toggleVisual([grid], [midSurvey, wrongModal])
+            answer = [];
+            instructions.innerHTML = "Remember this sequence!"
+            getSequence();
         }
-        answer = [];
-        toggleVisual([grid], [wrongModal]);
-        instructions.innerHTML = "Remember this sequence!"
-        getSequence();
     }
 }
 
@@ -155,4 +157,12 @@ function resetColors(){
     colors.forEach((color) => {
         document.getElementById(color).src="colors/" + color + ".png";
     });
+}
+
+function concat(){
+    userMidSurvey += playThrough + ": \n" + "Pleasant Rating: " + document.getElementById("pleasantRating").value + "\n" 
+    + "Enhance Rating: " + document.getElementById("enhanceRating").value + "\n";
+    console.log(userMidSurvey);
+    playThrough++;
+    restartGrid();
 }

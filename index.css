@@ -41,6 +41,11 @@ table {
     display: none;
 }
 
+#midSurvey{
+    display: none;
+    text-align: center;
+}
+
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
