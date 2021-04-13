@@ -90,9 +90,7 @@ function enterSequence(color) {
 	if(!allowedToPlay){
 		return;
 	}
-	if(answer.length == sequence.length){
-        compareAnswer();
-    }
+    compareAnswer();
 }
 
 function compareAnswer(){
@@ -103,7 +101,7 @@ function compareAnswer(){
             console.log("Incorrect")
         }
     });
-    if (correct) {
+    if (correct && answer.length == sequence.length) {
         console.log("Correct");
         setTimeout(function(){
             restartGrid();
@@ -134,6 +132,11 @@ function toggleModal() {
 function restartGrid(){
     allowedToPlay = false;
     resetColors();
+    if (!correct){
+        answer = [];
+        sequence = [];
+        correct = true;
+    }
     if (playThrough > 4) {
         beginEndingSurvey();
     } else {
