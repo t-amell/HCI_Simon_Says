@@ -1,26 +1,31 @@
 
-var modal = document.getElementById("consentModal");
-var wrongModal =  document.getElementById("wrongAnswerModal");
-var grid = document.getElementById("grid");
-var instructions = document.getElementById("instructions");
-var agreeButton = document.getElementById("agreeButton");
-var toggleButton = document.getElementById("toggleButton");
+let modal = document.getElementById("consentModal");
+let wrongModal =  document.getElementById("wrongAnswerModal");
+let grid = document.getElementById("grid");
+let instructions = document.getElementById("instructions");
+let agreeButton = document.getElementById("agreeButton");
+let toggleButton = document.getElementById("toggleButton");
+let newSeqButton = document.getElementById("newSeqButton");
+
+var playThrough = 0;
+var timeoutIds = [];
 var sequence = [];
 var answer = [];
+var colors = ["green", "red", "yellow", "blue"];
+var allowedToPlay = false;
 
 function closeModal() {
-    toggleVisual(toggleButton, modal)
+    toggleVisual([toggleButton, newSeqButton], [modal])
     beginStudy();
 }
 
 function beginStudy() {
-    toggleVisual(grid, agreeButton);
+    toggleVisual([grid], [agreeButton]);
     instructions.innerHTML = "Remember this sequence!"
     getSequence();
 }
 
 function getSequence() {
-    var colors = ["green", "red", "yellow", "blue"];
     for (sequenceMax = 0; sequenceMax < 5; sequenceMax++) {
         var slot = Math.floor(Math.random() * 4);
         sequence.push(colors[slot]);
@@ -30,7 +35,6 @@ function getSequence() {
     }
 }
 
-var allowedToPlay = false;
 function playerClick(color) {
     if(!allowedToPlay){
         return;
@@ -69,17 +73,17 @@ function playerClick(color) {
 function playSequence(sequence) {
 
     sequence.forEach((color, index) => {
-        setTimeout(function(){
+        timeoutIds.push(setTimeout(function(){
             document.getElementById(color).src="colors/" + color + "Up.png";
-        }, (index * 1500) + 500);
-        setTimeout(function(){
+        }, (index * 1500) + 500));
+        timeoutIds.push(setTimeout(function(){
             document.getElementById(color).src="colors/" + color + ".png";
-        }, ((index + 1) * 1500) - 500);
+        }, ((index + 1) * 1500) - 500));
     }); 
-    setTimeout(function(){
+    timeoutIds.push(setTimeout(function(){
         instructions.innerHTML = "Repeat the sequence!"
         allowedToPlay = true;
-    }, (sequence.length * 1500) - 500)
+    }, (sequence.length * 1500) - 500));
 }
 
 function enterSequence(color) {
@@ -90,37 +94,73 @@ function enterSequence(color) {
 	answer.push(color);
     console.log(answer)
 	
-	if(answer.length >= sequence.length){
-		compareAnswer();
-	}
+	compareAnswer();
 }
 
 function compareAnswer(){
     var works = true;
-	sequence.forEach((color, index) => {
-        if(answer[index] != color) {
-            toggleVisual(wrongModal, grid)
+	answer.forEach((color, index) => {
+        if(sequence[index] != color) {
+            toggleVisual([wrongModal], [grid])
             works = false;
             console.log("Incorrect")
         }
-    })
+    });
 
-    if (works) {
-        //GOOD MODAL
-        console.log("works")
+    if (works && answer.length >= sequence.length) {
+        playThrough++;
+        console.log("works");
+        restartGrid();
     }
 	
 }
 
-function toggleVisual(toShow, toDisappear) {
-    toShow.style.display = "block";
-    toDisappear.style.display = "none";
+function toggleVisual(toShow, toHide) {
+    toShow.forEach((element) => {
+        element.style.display = "block";
+    })
+    toHide.forEach((element) => {
+        element.style.display = "none";
+    })
+}
+
+function toggleModal() {
+    if (modal.style.display == "none") {
+        resetColors();
+        toggleVisual([modal], [grid, newSeqButton]);
+    } else {
+        toggleVisual([grid, newSeqButton], [modal]);
+        restartGrid();
+    }
 }
 
 function restartGrid(){
-    answer = [];
-    sequence = [];
-    toggleVisual(grid, wrongModal);
-    instructions.innerHTML = "Remember this sequence!"
-    getSequence();
+    allowedToPlay = false;
+    resetColors();
+    if (playThrough > 4) {
+        beginEndingSurvey();
+    } else {
+        answer = [];
+        sequence = [];
+        toggleVisual([grid], [wrongModal]);
+        instructions.innerHTML = "Remember this sequence!"
+        getSequence();
+    }
+}
+
+function getNewSequence() {
+    instructions.innerHTML = "Getting New Sequence!"
+    resetColors();
+    timeoutIds.push(setTimeout(function(){
+        restartGrid();
+    }, 2000));
+}
+
+function resetColors(){
+    timeoutIds.forEach((id) => {
+        clearTimeout(id);
+    });
+    colors.forEach((color) => {
+        document.getElementById(color).src="colors/" + color + ".png";
+    });
 }

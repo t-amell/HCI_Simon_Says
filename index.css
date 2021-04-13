@@ -37,6 +37,10 @@ table {
     display: none;
 }
 
+#newSeqButton{
+    display: none;
+}
+
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
