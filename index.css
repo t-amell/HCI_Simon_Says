@@ -73,3 +73,10 @@ table {
     display: none;
     line-height: 250%;
 }
+
+/*
+change display or comment out to see skip button
+*/
+#skiptosurvey{
+    display: none;
+}
