@@ -9,6 +9,12 @@ let midSurvey = document.getElementById("midSurvey");
 let endSurvey = document.getElementById("endSurvey")
 let end = document.getElementById("end")
 
+let sound1 = document.getElementById("sound-1");
+let sound2 = document.getElementById("sound-2");
+let sound3 = document.getElementById("sound-3");
+let sound4 = document.getElementById("sound-4");
+let sound5 = document.getElementById("sound-5");
+
 //Array for sounds
 let sounds = [1, 2, 3, 4, 5]
 
@@ -154,6 +160,7 @@ function restartGrid(){
         beginEndingSurvey();
     } else {
         if (answer.length >= 5) {
+            playSound(playThrough);
             answer = [];
             sequence = [];
             toggleVisual([midSurvey], [grid, toggleButton]);
@@ -203,7 +210,26 @@ function submitExperiment(){
 }
 
 function playSound(element){
-    //Play Sound in element slot of array
+    switch(element){
+        case 1:
+            sound1.play();
+            break;
+        case 2:
+            sound2.play();
+            break;
+        case 3:
+            sound3.play();
+            break;
+        case 4:
+            sound4.play();
+            break;
+        case 5:
+            sound5.play();
+            break;
+        default:
+            console.log("ERROR NO SOUND-" + soundID);
+            break;
+    }
 }
 
 function sendEmail(body) {
