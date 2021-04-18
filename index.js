@@ -210,6 +210,7 @@ function submitExperiment(){
 }
 
 function playSound(element){
+    console.log("PLAYING SOUND " + element);
     switch(element){
         case 1:
             sound1.play();
@@ -243,3 +244,7 @@ function sendEmail(body) {
       Body: body,
     });
   }
+
+function cutToEnd(){
+    beginEndingSurvey();
+}

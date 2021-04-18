@@ -155,12 +155,14 @@
                 <option value="Sound Four">Sound Four</option>
                 <option value="Sound Five">Sound Five</option>
             </select><br>
-            <p1>Click these button to hear the respective sound again!</p1><br>
-            <button onclick="playSound(0)">Sound One</button>
-            <button onclick="playSound(1)">Sound Two</button>
-            <button onclick="playSound(2)">Sound Three</button>
-            <button onclick="playSound(3)">Sound Four</button>
-            <button onclick="playSound(4)">Sound Five</button><br>
+            <p1>Click these button to hear the respective sound again!</p1>
+            <br>
+            <button type="button" onclick="playSound(1)">Sound One</button>
+            <button type="button" onclick="playSound(2)">Sound Two</button>
+            <button type="button" onclick="playSound(3)">Sound Three</button>
+            <button type="button" onclick="playSound(4)">Sound Four</button>
+            <button type="button" onclick="playSound(5)">Sound Five</button>
+            <br>
             <label for="siteProblems">Please describe any issues you had with the site: </label><br>
             <textarea id="siteProblems" cols="40" rows="5"></textarea><br>
             <label for="suggestions">Do you have any suggestions on how to improve the site or experiment?</label><br>
@@ -187,6 +189,7 @@
     </tr>
 </table>
 
+<button onclick="cutToEnd()">SKIP</button>
 
 <script src="https://smtpjs.com/v3/smtp.js"></script>
 <script src="index.js"></script>
