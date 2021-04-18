@@ -27,28 +27,7 @@ table {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-#toggleButton{
     display: none;
-}
-
-#wrongAnswerModal{
-    display: none;
-}
-
-#newSeqButton{
-    display: none;
-}
-
-#midSurvey{
-    display: none;
-    line-height: 250%;
-}
-
-#endSurvey{
-    display: block;
-    line-height: 250%;
 }
 
 /* Modal Content */
@@ -58,6 +37,7 @@ table {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /* The Close Button */
@@ -82,4 +62,14 @@ table {
 
 #instructions {
     text-align: center;
+}
+
+#midSurvey{
+    display: none;
+    line-height: 250%;
+}
+
+#endSurvey{
+    display: none;
+    line-height: 250%;
 }

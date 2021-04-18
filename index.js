@@ -6,6 +6,8 @@ let instructions = document.getElementById("instructions");
 let agreeButton = document.getElementById("agreeButton");
 let toggleButton = document.getElementById("toggleButton");
 let midSurvey = document.getElementById("midSurvey");
+let endSurvey = document.getElementById("endSurvey")
+let end = document.getElementById("end")
 
 //Array for sounds
 let sounds = [1, 2, 3, 4, 5]
@@ -19,6 +21,8 @@ var allowedToPlay = false;
 var correct = true;
 
 var userMidSurvey = "";
+
+toggleVisual([modal], [toggleButton])
 
 function closeModal() {
     toggleVisual([toggleButton], [modal])
@@ -148,7 +152,7 @@ function restartGrid(){
             sequence = [];
             toggleVisual([midSurvey], [grid, toggleButton]);
         } else {
-            toggleVisual([grid], [midSurvey, wrongModal])
+            toggleVisual([grid, toggleButton], [midSurvey, wrongModal])
             answer = [];
             instructions.innerHTML = "Remember this sequence!"
             getSequence();
@@ -166,22 +170,36 @@ function resetColors(){
 }
 
 function concat(){
-    userMidSurvey += playThrough + ": \n" + "Pleasant Rating: " + document.getElementById("pleasantRating").value + "\n" 
-    + "Enhance Rating: " + document.getElementById("enhanceRating").value + "\n";
+    userMidSurvey += "Playthrough " + (playThrough + 1) + ": " + "Pleasant Rating - " + document.getElementById("pleasantRating").value + " " 
+    + "Enhance Rating - " + document.getElementById("enhanceRating").value + "<br>";
     console.log(userMidSurvey);
     playThrough++;
     restartGrid();
 }
 
 function beginEndingSurvey(){
-    sendEmail();
+    toggleVisual([endSurvey],[grid, toggleButton, midSurvey])
+}
+
+function submitExperiment(){
+    var finalMessage = userMidSurvey + "<br>" + 
+    "Age: " + document.getElementById("age").value + "<br>" +
+    "Computer Usage: " + document.getElementById("compUsage").value + "<br>" +
+    "Student Status: " + document.getElementById("student").value + "<br>" +
+    "Did Sounds Change Experience: " + document.getElementById("experience").value + "<br>" +
+    "Positive or Negative Change: " + document.getElementById("pos-neg").value + "<br>" +
+    "Favorite Sound: " + document.getElementById("favorite").value + "<br>" +
+    "Problems With Site: " + document.getElementById("siteProblems").value + "<br>" +
+    "Suggestions: " + document.getElementById("suggestions").value + "<br>"
+    sendEmail(finalMessage)
+    toggleVisual([end],[endSurvey])
 }
 
 function playSound(element){
     //Play Sound in element slot of array
 }
 
-function sendEmail() {
+function sendEmail(body) {
     Email.send({
       Host: "smtp.gmail.com",
       Username: "hci.simon.says@gmail.com",
@@ -189,6 +207,6 @@ function sendEmail() {
       To: 'hci.simon.says@gmail.com',
       From: "hci.simon.says@gmail.com",
       Subject: "Test Results",
-      Body: userMidSurvey,
+      Body: body,
     });
   }

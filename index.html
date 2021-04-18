@@ -65,65 +65,6 @@
     </div>
 </div>
 
-<div id= "midSurvey" class="modal">
-    <div class="modal-content">
-        <form>
-            <p>There was a unique sound that played after your finished that puzzle!</p>
-            <label for="pleasantRating">How pleasant was the sound that played (1=Least pleasant, 5=Extremely pleasant)?: </label>
-            <input type="range" id="pleasantRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
-            <output>1</output><br>
-            <label for="enhanceRating">Did you feel like hearing the sound made the experience more satisfying (1=Didn't change anything, 5=Enhanced the experience)?: </label>
-            <input type="range" id="enhanceRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
-            <output>1</output><br>
-            <input type="button" onclick="concat()" value="Submit">
-        </form>
-    </div>
-</div>
-
-<div id= "endSurvey" class="modal">
-    <div class="modal-content">
-        <form>
-            <h1>Post-Experiment Questionnaire</h1>
-            <label for="age">What is your age?</label>
-            <input type="number" id="age"><br>
-            <label for="compUsage">How often do you use the computer?</label>
-            <select id="compUsage">
-                <option value="0-9 hours/week">0-9 hours/week</option>
-                <option value="10-19 hours/week">10-19 hours/week</option>
-                <option value="20-29 hours/week">20-29 hours/week</option>
-                <option value="30-39 hours/week">30-39 hours/week</option>
-                <option value="Over 40 hours/week">Over 40 hours/week</option>
-            </select><br>
-            <label for="student">Are you a student?</label>
-            <select id="student">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select><br>
-            <label for="experience">Did the sounds indicating you successfully finish the puzzle change the experience at all?</label>
-            <select id="experience">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select><br>
-            <label for="pos-neg">If so, was it positive or negative?</label>
-            <input type="text" id="pos-neg"><br>
-            <label for="favorite">After hearing all the sounds, which was your favorite?</label>
-            <select id="favorite">
-                <option value="Sound One">Sound One</option>
-                <option value="Sound Two">Sound Two</option>
-                <option value="Sound Three">Sound Three</option>
-                <option value="Sound Four">Sound Four</option>
-                <option value="Sound Five">Sound Five</option>
-            </select><br>
-            <p1>Click these button to hear the respect sound!</p1><br>
-            <button onclick="playSound(0)">Sound One</button>
-            <button onclick="playSound(1)">Sound Two</button>
-            <button onclick="playSound(2)">Sound Three</button>
-            <button onclick="playSound(3)">Sound Four</button>
-            <button onclick="playSound(4)">Sound Five</button><br>
-        </form>
-    </div>
-</div>
-
 <div id = "grid">
     <h2 id="instructions"></h2>
     <table>
@@ -151,6 +92,83 @@
         <h1>Wrong Pattern!</h1>
         <p>Try again.</p>
         <button onclick = "restartGrid()">Restart</button>
+    </div>
+</div>
+
+<div id= "midSurvey" class="modal" style="text-align: center;">
+    <div class="modal-content">
+        <form>
+            <p><b>There was a unique sound that played after your finished that puzzle!</b></p>
+            <label for="pleasantRating">How pleasant was the sound that played (1=Least pleasant, 5=Extremely pleasant)?</label><br>
+            <input type="range" id="pleasantRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
+            <output>1</output><br>
+            <label for="enhanceRating">Did you feel like hearing the sound made the experience more satisfying (1=Didn't change anything, 5=Enhanced the experience)</label><br>
+            <input type="range" id="enhanceRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
+            <output>1</output><br>
+            <input type="button" onclick="concat()" value="Submit">
+        </form>
+    </div>
+</div>
+
+<div id= "endSurvey" class="modal">
+    <div class="modal-content">
+        <form>
+            <h1>Post-Experiment Questionnaire</h1>
+            <label for="age">What is your age?</label>
+            <input type="number" id="age" min="0" max="150" value="0"><br>
+            <label for="compUsage">How often do you use the computer?</label>
+            <select id="compUsage">
+                <option value="0-9 hours/week">0-9 hours/week</option>
+                <option value="10-19 hours/week">10-19 hours/week</option>
+                <option value="20-29 hours/week">20-29 hours/week</option>
+                <option value="30-39 hours/week">30-39 hours/week</option>
+                <option value="Over 40 hours/week">Over 40 hours/week</option>
+                <option value="Wish not to answer">Wish not to answer</option>
+            </select><br>
+            <label for="student">Are you a student?</label>
+            <select id="student">
+                <option value="Wish not to answer">Wish not to answer</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="experience">Did the sounds indicating you successfully finish the puzzle change the experience at all?</label>
+            <select id="experience">
+                <option value="Wish not to answer">Wish not to answer</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="pos-neg">If so, was it positive or negative?</label>
+            <input type="text" id="pos-neg"><br>
+            <label for="favorite">After hearing all the sounds, which was your favorite?</label>
+            <select id="favorite">
+                <option value="Wish not to answer">Wish not to answer</option>
+                <option value="Sound One">Sound One</option>
+                <option value="Sound Two">Sound Two</option>
+                <option value="Sound Three">Sound Three</option>
+                <option value="Sound Four">Sound Four</option>
+                <option value="Sound Five">Sound Five</option>
+            </select><br>
+            <p1>Click these button to hear the respective sound again!</p1><br>
+            <button onclick="playSound(0)">Sound One</button>
+            <button onclick="playSound(1)">Sound Two</button>
+            <button onclick="playSound(2)">Sound Three</button>
+            <button onclick="playSound(3)">Sound Four</button>
+            <button onclick="playSound(4)">Sound Five</button><br>
+            <label for="siteProblems">Please describe any issues you had with the site: </label><br>
+            <textarea id="siteProblems" cols="40" rows="5"></textarea><br>
+            <label for="suggestions">Do you have any suggestions on how to improve the site or experiment?</label><br>
+            <textarea type="text" id="suggestions" cols="40" rows="5"></textarea><br>
+            <input type="button" onclick="submitExperiment()" value="Submit">
+        </form>
+    </div>
+</div>
+
+<div id= "end" class="modal">
+    <div class="modal-content" style="text-align: center;">
+        <form>
+            <h1>We've Received Your Responses!</h1>
+            <p>Thanks so much for your participation</p>
+        </form>
     </div>
 </div>
  
