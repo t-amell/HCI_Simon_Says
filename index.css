@@ -43,7 +43,12 @@ table {
 
 #midSurvey{
     display: none;
-    text-align: center;
+    line-height: 250%;
+}
+
+#endSurvey{
+    display: block;
+    line-height: 250%;
 }
 
 /* Modal Content */

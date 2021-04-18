@@ -65,15 +65,63 @@
     </div>
 </div>
 
-<div id= "midSurvey">
-    <form>
-        <p>There was a unique sound that played after your finished that puzzle!</p>
-        <label for="pleasantRating">How pleasant was the sound that played (1=Least pleasant, 5=Extremely pleasant)?: </label>
-        <input type="number" id="pleasantRating" min="1" max="5" value="1"><br>
-        <label for="enhanceRating">Did you feel like hearing the sound made the experience more satisfying (1=Didn't change anything, 5=Enhanced the experience)?: </label>
-        <input type="number" id="enhanceRating" min="1" max="5" value="1"><br>
-        <input type="button" onclick="concat()" value="Submit">
-    </form>
+<div id= "midSurvey" class="modal">
+    <div class="modal-content">
+        <form>
+            <p>There was a unique sound that played after your finished that puzzle!</p>
+            <label for="pleasantRating">How pleasant was the sound that played (1=Least pleasant, 5=Extremely pleasant)?: </label>
+            <input type="range" id="pleasantRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
+            <output>1</output><br>
+            <label for="enhanceRating">Did you feel like hearing the sound made the experience more satisfying (1=Didn't change anything, 5=Enhanced the experience)?: </label>
+            <input type="range" id="enhanceRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
+            <output>1</output><br>
+            <input type="button" onclick="concat()" value="Submit">
+        </form>
+    </div>
+</div>
+
+<div id= "endSurvey" class="modal">
+    <div class="modal-content">
+        <form>
+            <h1>Post-Experiment Questionnaire</h1>
+            <label for="age">What is your age?</label>
+            <input type="number" id="age"><br>
+            <label for="compUsage">How often do you use the computer?</label>
+            <select id="compUsage">
+                <option value="0-9 hours/week">0-9 hours/week</option>
+                <option value="10-19 hours/week">10-19 hours/week</option>
+                <option value="20-29 hours/week">20-29 hours/week</option>
+                <option value="30-39 hours/week">30-39 hours/week</option>
+                <option value="Over 40 hours/week">Over 40 hours/week</option>
+            </select><br>
+            <label for="student">Are you a student?</label>
+            <select id="student">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="experience">Did the sounds indicating you successfully finish the puzzle change the experience at all?</label>
+            <select id="experience">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <label for="pos-neg">If so, was it positive or negative?</label>
+            <input type="text" id="pos-neg"><br>
+            <label for="favorite">After hearing all the sounds, which was your favorite?</label>
+            <select id="favorite">
+                <option value="Sound One">Sound One</option>
+                <option value="Sound Two">Sound Two</option>
+                <option value="Sound Three">Sound Three</option>
+                <option value="Sound Four">Sound Four</option>
+                <option value="Sound Five">Sound Five</option>
+            </select><br>
+            <p1>Click these button to hear the respect sound!</p1><br>
+            <button onclick="playSound(0)">Sound One</button>
+            <button onclick="playSound(1)">Sound Two</button>
+            <button onclick="playSound(2)">Sound Three</button>
+            <button onclick="playSound(3)">Sound Four</button>
+            <button onclick="playSound(4)">Sound Five</button><br>
+        </form>
+    </div>
 </div>
 
 <div id = "grid">
@@ -99,11 +147,11 @@
 </div>
 
 <div id = "wrongAnswerModal" class = "modal">
-
-<h1>Wrong Pattern!</h1>
-<p>Try again.</p>
-
-<button onclick = "restartGrid()">Restart</button>
+    <div class="modal-content">
+        <h1>Wrong Pattern!</h1>
+        <p>Try again.</p>
+        <button onclick = "restartGrid()">Restart</button>
+    </div>
 </div>
  
 <table>

@@ -7,6 +7,9 @@ let agreeButton = document.getElementById("agreeButton");
 let toggleButton = document.getElementById("toggleButton");
 let midSurvey = document.getElementById("midSurvey");
 
+//Array for sounds
+let sounds = [1, 2, 3, 4, 5]
+
 var playThrough = 0;
 var timeoutIds = [];
 var sequence = [];
@@ -145,7 +148,7 @@ function restartGrid(){
             sequence = [];
             toggleVisual([midSurvey], [grid, toggleButton]);
         } else {
-            toggleVisual([grid, toggleButton], [midSurvey, wrongModal])
+            toggleVisual([grid], [midSurvey, wrongModal])
             answer = [];
             instructions.innerHTML = "Remember this sequence!"
             getSequence();
@@ -172,6 +175,10 @@ function concat(){
 
 function beginEndingSurvey(){
     sendEmail();
+}
+
+function playSound(element){
+    //Play Sound in element slot of array
 }
 
 function sendEmail() {
