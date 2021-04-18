@@ -145,7 +145,7 @@ function restartGrid(){
             sequence = [];
             toggleVisual([midSurvey], [grid, toggleButton]);
         } else {
-            toggleVisual([grid], [midSurvey, wrongModal])
+            toggleVisual([grid, toggleButton], [midSurvey, wrongModal])
             answer = [];
             instructions.innerHTML = "Remember this sequence!"
             getSequence();
@@ -169,3 +169,19 @@ function concat(){
     playThrough++;
     restartGrid();
 }
+
+function beginEndingSurvey(){
+    sendEmail();
+}
+
+function sendEmail() {
+    Email.send({
+      Host: "smtp.gmail.com",
+      Username: "hci.simon.says@gmail.com",
+      Password: "hcidavekopec",
+      To: 'hci.simon.says@gmail.com',
+      From: "hci.simon.says@gmail.com",
+      Subject: "Test Results",
+      Body: userMidSurvey,
+    });
+  }
