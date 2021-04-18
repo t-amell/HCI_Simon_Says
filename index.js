@@ -19,6 +19,8 @@ var answer = [];
 var colors = ["green", "red", "yellow", "blue"];
 var allowedToPlay = false;
 var correct = true;
+var timestamps = []
+var start = new Date().getTime();
 
 var userMidSurvey = "";
 
@@ -26,6 +28,7 @@ toggleVisual([modal], [toggleButton])
 
 function closeModal() {
     toggleVisual([toggleButton], [modal])
+    start = new Date().getTime();
     beginStudy();
 }
 
@@ -89,6 +92,7 @@ function playSequence() {
     timeoutIds.push(setTimeout(function(){
         instructions.innerHTML = "Repeat the sequence!"
         allowedToPlay = true;
+        start = new Date().getTime();
     }, (sequence.length * 1500) - 500));
 }
 
@@ -110,6 +114,8 @@ function compareAnswer(){
     });
     if (correct && answer.length == sequence.length) {
         console.log("Correct");
+        var end = new Date().getTime();
+        timestamps.push((end - start))
         setTimeout(function(){
             restartGrid();
         }, 150);
@@ -170,8 +176,8 @@ function resetColors(){
 }
 
 function concat(){
-    userMidSurvey += "Playthrough " + (playThrough + 1) + ": " + "Pleasant Rating - " + document.getElementById("pleasantRating").value + " " 
-    + "Enhance Rating - " + document.getElementById("enhanceRating").value + "<br>";
+    userMidSurvey += "Playthrough " + (playThrough + 1) + ": " + "Pleasant Rating-" + document.getElementById("pleasantRating").value + " " 
+    + "Enhance Rating-" + document.getElementById("enhanceRating").value + " Time Between Last Flash and Correct Answer-" + timestamps[playThrough] + "ms<br>";
     console.log(userMidSurvey);
     playThrough++;
     restartGrid();
@@ -190,9 +196,10 @@ function submitExperiment(){
     "Positive or Negative Change: " + document.getElementById("pos-neg").value + "<br>" +
     "Favorite Sound: " + document.getElementById("favorite").value + "<br>" +
     "Problems With Site: " + document.getElementById("siteProblems").value + "<br>" +
-    "Suggestions: " + document.getElementById("suggestions").value + "<br>"
-    sendEmail(finalMessage)
-    toggleVisual([end],[endSurvey])
+    "Suggestions: " + document.getElementById("suggestions").value + "<br><br>" +
+    "Navigator: " + navigator.userAgent + "<br>";
+    sendEmail(finalMessage);
+    toggleVisual([end],[endSurvey]);
 }
 
 function playSound(element){
