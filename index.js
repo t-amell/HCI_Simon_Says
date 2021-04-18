@@ -160,7 +160,7 @@ function restartGrid(){
         beginEndingSurvey();
     } else {
         if (answer.length >= 5) {
-            playSound(playThrough);
+            playSound(sounds[playThrough]);
             answer = [];
             sequence = [];
             toggleVisual([midSurvey], [grid, toggleButton]);
@@ -228,7 +228,7 @@ function playSound(element){
             sound5.play();
             break;
         default:
-            console.log("ERROR NO SOUND-" + soundID);
+            console.log("ERROR NO SOUND-" + element);
             break;
     }
 }
