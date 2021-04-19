@@ -65,6 +65,9 @@
         <p>Burlington, VT 05402</p>
         <p>Email: irb@champlain.edu</p>
         <p>Website: http://www.champlain.edu/academic-affairs-provost/institutional-review-board.html</p>
+        <br>
+        <p>Be sure to have your volume on and at a reasonable level!</p>
+        <br>
         <p>If you agree to participate in the experiment, click the agree button below.</p>
         <br>
         <button onclick = "closeModal()" id="agreeButton" class="close">Agree and Continue</button>
@@ -105,7 +108,7 @@
 <div id= "midSurvey" class="modal" style="text-align: center;">
     <div class="modal-content">
         <form>
-            <p><b>There was a unique sound that played after your finished that puzzle!</b></p>
+            <p><b>There was a unique sound that played after you finished that puzzle!</b></p>
             <label for="pleasantRating">How pleasant was the sound that played (1=Least pleasant, 5=Extremely pleasant)?</label><br>
             <input type="range" id="pleasantRating" min="1" max="5" value="1" oninput="this.nextElementSibling.value = this.value">
             <output>1</output><br>
