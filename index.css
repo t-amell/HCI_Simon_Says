@@ -3,6 +3,11 @@ html, body {
     text-align: center;
 }
 
+html{
+    background-image: linear-gradient(0, #cecec1, #c9f6fc);
+    min-height:100%;
+}
+
 img {
     width: 100%;
     height: auto;
